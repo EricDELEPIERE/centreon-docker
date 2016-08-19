@@ -47,6 +47,7 @@ RUN chkconfig httpd on
 
 # Install and configure supervisor
 RUN yum -y install python-setuptools
+RUN yum install -y iproute hostname inotify-tools yum-utils which jq
 RUN easy_install supervisor
 
 # Todo better split file
