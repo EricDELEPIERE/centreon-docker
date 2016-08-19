@@ -40,6 +40,11 @@ RUN chown root:centreon-engine /usr/lib/nagios/plugins/check_icmp
 RUN chmod -w /usr/lib/nagios/plugins/check_icmp
 RUN chmod u+s /usr/lib/nagios/plugins/check_icmp
 
+# Start SNMPD and HTTPD on boot
+RUN chkconfig snmpd on
+RUN chkconfig httpd on
+
+
 # Install and configure supervisor
 RUN yum -y install python-setuptools
 RUN easy_install supervisor
@@ -48,6 +53,6 @@ RUN easy_install supervisor
 ADD scripts/supervisord.conf /etc/supervisord.conf
 
 # Expose port SSH and HTTP for the service
-#EXPOSE 22 80
+EXPOSE 22 80
 
 CMD ['/usr/bin/supervisord', '--configuration=/etc/supervisord.conf']
