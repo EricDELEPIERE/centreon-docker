@@ -25,6 +25,7 @@ RUN yum -y install centreon centreon-base-config-centreon-engine centreon-instal
 RUN /etc/init.d/mysql stop
 
 # Fix pass in db
+ADD scripts/cbmod.sql /tmp/cbmod.sql
 RUN /etc/init.d/mysql start && sleep 5 && mysql centreon < /tmp/cbmod.sql && /usr/bin/centreon -u admin -p centreon -a POLLERGENERATE -v 1 && /usr/bin/centreon -u admin -p centreon -a CFGMOVE -v 1 && /etc/init.d/mysql stop
 
 # Set rights for setuid
