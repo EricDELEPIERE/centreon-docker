@@ -19,7 +19,7 @@ RUN yum -y install MariaDB-server
 RUN /etc/init.d/mysql start
 
 # Install Centreon
-RUN yum -y install centreon centreon-base-config-centreon-engine centreon-installed centreon-clapi centreon-widget-*
+RUN yum -y install centreon centreon-base-config-centreon-engine centreon-installed centreon-clapi
 
 # Stop Mysql
 RUN /etc/init.d/mysql stop
@@ -33,9 +33,20 @@ RUN chown root:centreon-engine /usr/lib/nagios/plugins/check_icmp
 RUN chmod -w /usr/lib/nagios/plugins/check_icmp
 RUN chmod u+s /usr/lib/nagios/plugins/check_icmp
 
+# Install and configure supervisor
+RUN yum -y install python-setuptools
+
+# Expose port SSH and HTTP for the service
+# EXPOSE 22 80
+
+# Set rights for setuid
+RUN chown root:centreon-engine /usr/lib/nagios/plugins/check_icmp
+RUN chmod -w /usr/lib/nagios/plugins/check_icmp
+RUN chmod u+s /usr/lib/nagios/plugins/check_icmp
+
 # Start SNMPD and HTTPD on boot
-RUN chkconfig snmpd on
-RUN chkconfig httpd on
+# RUN chkconfig snmpd on
+# RUN chkconfig httpd on
 
 
 # Install and configure supervisor
