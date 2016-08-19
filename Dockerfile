@@ -47,13 +47,13 @@ RUN chkconfig httpd on
 
 # Install and configure supervisor
 RUN yum -y install python-setuptools
-RUN yum install -y iproute hostname inotify-tools yum-utils which jq
 RUN easy_install supervisor
 
 # Todo better split file
-ADD scripts/supervisord.conf /etc/supervisord.conf
+COPY scripts/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Expose port SSH and HTTP for the service
 EXPOSE 22 80
 
-CMD ['/usr/bin/supervisord', '--configuration=/etc/supervisord.conf']
+# Launch Supervisord
+CMD ['/usr/bin/supervisord']
