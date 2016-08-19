@@ -53,7 +53,7 @@ ADD scripts/supervisord.conf /etc/
 
 
 # Expose port SSH and HTTP for the service
-EXPOSE 22 80
+# EXPOSE 22 80
 
 # Launch Supervisord
 CMD ['/usr/bin/supervisord']
