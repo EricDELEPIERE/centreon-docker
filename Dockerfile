@@ -22,7 +22,7 @@ RUN /etc/init.d/mysql start
 RUN yum -y install centreon centreon-base-config-centreon-engine centreon-installed centreon-clapi centreon-widget-*
 
 # Stop Mysql
-/etc/init.d/mysql stop
+RUN /etc/init.d/mysql stop
 
 # Fix pass in db
 ADD scripts/cbmod.sql /tmp/cbmod.sql
@@ -31,7 +31,7 @@ RUN sleep 5
 RUN mysql centreon < /tmp/cbmod.sql
 
 # Reload configuration
-RUN usr/bin/centreon -u admin -p centreon -a POLLERGENERATE -v 1 
+RUN /usr/bin/centreon -u admin -p centreon -a POLLERGENERATE -v 1 
 RUN /usr/bin/centreon -u admin -p centreon -a CFGMOVE -v 1
 RUN /etc/init.d/mysql stop
 
