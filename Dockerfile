@@ -41,7 +41,7 @@ RUN chkconfig httpd on
 RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 RUN yum --enablerepo=epel install -y supervisor
 RUN mv -f /etc/supervisord.conf /etc/supervisord.conf.org
-ADD scripts/supervisord.conf /etc/
+ADD scripts/supervisord.conf /etc/supervisord.conf
 
 
 # Expose port SSH and HTTP for the service
