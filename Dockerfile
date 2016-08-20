@@ -16,9 +16,8 @@ RUN sed -i 's/^#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config
 RUN /etc/init.d/sshd start && /etc/init.d/sshd stop
 
 # Install Mysql
-# RUN yum -y install MariaDB-server 
-# RUN chkconfig mysql on
-# RUN /etc/init.d/mysql start
+RUN yum -y install MariaDB-server 
+RUN /etc/init.d/mysql start
 
 # Install Centreon
 # RUN yum -y install centreon centreon-base-config-centreon-engine centreon-installed centreon-clapi
