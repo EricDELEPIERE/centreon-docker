@@ -24,7 +24,7 @@ RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon
 
 ADD scripts/script.sh /tmp/script.sh
 RUN chmod +x /tmp/script.sh
-CMD /tmp/start.sh
+CMD /tmp/script.sh
 
 EXPOSE 22 80
 #CMD ['/usr/bin/supervisord', '--configuration=/etc/supervisord.conf']
