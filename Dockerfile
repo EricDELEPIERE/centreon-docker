@@ -22,20 +22,9 @@ RUN /etc/init.d/sshd start && /etc/init.d/sshd stop
 # Install Centreon
 RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon
 
-# Install Supervisor
-#RUN /bin/rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-#RUN yum -y install python-setuptools
-#RUN easy_install supervisor
-#RUN mkdir -p /var/log/supervisor
-#ADD scripts/supervisord.conf /etc/supervisord.conf
-
-# Disable Iptables
-CMD iptables stop
-CMD mysql start
-CMD snmpd start
-CMD centengine start
-CMD cbd start
-CMD httpd start
+ADD scripts/script.sh /tmp/script.sh
+RUN chmod +x /tmp/script.sh
+CMD /tmp/start.sh
 
 EXPOSE 22 80
 #CMD ['/usr/bin/supervisord', '--configuration=/etc/supervisord.conf']
