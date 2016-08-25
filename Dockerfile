@@ -3,7 +3,7 @@ MAINTAINER matthieu-robin
 
 # Update CentOS
 RUN yum -y update
-RUN yum -y install wget
+RUN yum -y install wget git
 
 # Install Centreon Repository
 RUN wget http://yum.centreon.com/standard/3.0/stable/ces-standard.repo -O /etc/yum.repos.d/ces-standard.repo
