@@ -21,10 +21,11 @@ RUN /etc/init.d/sshd start && /etc/init.d/sshd stop
 
 # Install Centreon
 RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon
+RUN git clone https://github.com/centreon/centreon-plugins.git /usr/lib/nagios/plugins/centreon-plugins/
 
 ADD scripts/script.sh /tmp/script.sh
 RUN chmod +x /tmp/script.sh
-CMD /tmp/script.sh
+CMD ['/tmp/script.sh']
 
 EXPOSE 22 80
-#CMD ['/usr/bin/supervisord', '--configuration=/etc/supervisord.conf']
+
