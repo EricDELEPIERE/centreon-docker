@@ -25,7 +25,7 @@ RUN git clone https://github.com/centreon/centreon-plugins.git /usr/lib/nagios/p
 
 ADD scripts/script.sh /tmp/script.sh
 RUN chmod +x /tmp/script.sh
-CMD ['/tmp/script.sh']
+CMD ["/tmp/script.sh"]
 
 EXPOSE 22 80
 
