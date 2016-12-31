@@ -21,11 +21,17 @@ RUN /etc/init.d/sshd start && /etc/init.d/sshd stop
 
 # Install Centreon
 RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon
+RUN yum --nogpg -y install centreon-widget*
 RUN git clone https://github.com/centreon/centreon-plugins.git /usr/lib/nagios/plugins/centreon-plugins/
 
+# Install SNMP stuff
+RUN yum -y install net-snmp*
+
+# Start services
 ADD scripts/script.sh /tmp/script.sh
 RUN chmod +x /tmp/script.sh
 CMD ["/tmp/script.sh"]
 
+# Exposed ports 
 EXPOSE 22 80
 
