@@ -12,13 +12,6 @@ RUN wget http://yum.centreon.com/standard/3.4/el7/stable/centreon-stable.repo -O
 RUN yum --nogpg -y install MariaDB-server
 RUN /etc/init.d/mysql start
 
-# Install ssh
-RUN yum -y install openssh-server openssh-client
-RUN mkdir /var/run/sshd
-RUN echo 'root:centreon' | chpasswd
-RUN sed -i 's/^#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config
-RUN /etc/init.d/sshd start && /etc/init.d/sshd stop
-
 # Install Centreon
 RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon centreon-widget* centreon-pp-manager
 
