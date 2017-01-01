@@ -1,5 +1,5 @@
 service iptables stop
-service mysql start
+service mysqld start
 service cbd start
 service centengine start
 service snmpd start
