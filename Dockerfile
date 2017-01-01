@@ -21,7 +21,6 @@ RUN /etc/init.d/sshd start && /etc/init.d/sshd stop
 
 # Install Centreon
 RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon centreon-widget* centreon-pp-manager
-RUN git clone https://github.com/centreon/centreon-plugins.git /usr/lib/nagios/plugins/centreon-plugins/
 
 # Install SNMP
 RUN yum -y install net-snmp*
