@@ -1,4 +1,4 @@
-FROM centos:centos6
+FROM centos:centos7
 MAINTAINER matthieu-robin
 
 # Update CentOS
@@ -6,7 +6,7 @@ RUN yum -y update
 RUN yum -y install wget git
 
 # Install Centreon Repository
-RUN wget http://yum.centreon.com/standard/3.0/stable/ces-standard.repo -O /etc/yum.repos.d/ces-standard.repo
+RUN wget http://yum.centreon.com/standard/3.4/el7/stable/centreon-stable.repo -O /etc/yum.repos.d/centreon-stable.repo
 
 # Install Maria-DB
 RUN yum --nogpg -y install MariaDB-server
@@ -20,7 +20,7 @@ RUN sed -i 's/^#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config
 RUN /etc/init.d/sshd start && /etc/init.d/sshd stop
 
 # Install Centreon
-RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon centreon-widget*
+RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon centreon-widget* centreon-pp-manager
 RUN git clone https://github.com/centreon/centreon-plugins.git /usr/lib/nagios/plugins/centreon-plugins/
 
 # Install SNMP
