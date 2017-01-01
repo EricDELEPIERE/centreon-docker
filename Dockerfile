@@ -20,11 +20,10 @@ RUN sed -i 's/^#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config
 RUN /etc/init.d/sshd start && /etc/init.d/sshd stop
 
 # Install Centreon
-RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon
-RUN yum --nogpg -y install centreon-widget*
+RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon centreon-widget*
 RUN git clone https://github.com/centreon/centreon-plugins.git /usr/lib/nagios/plugins/centreon-plugins/
 
-# Install SNMP stuff
+# Install SNMP
 RUN yum -y install net-snmp*
 
 # Start services
