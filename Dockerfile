@@ -15,6 +15,9 @@ RUN /etc/init.d/mysql start
 # Install Centreon
 RUN yum --nogpg -y install centreon-base-config-centreon-engine centreon centreon-widget* centreon-pp-manager
 
+# Install base plugin
+RUN yum --nogpg -y install centreon-plugin-Operatingsystems-Linux-Snmp centreon-plugin-Applications-Monitoring-Centreon-Central centreon-plugin-Applications-Monitoring-Centreon-Database centreon-plugin-Applications-Databases-Mysql
+
 # Install SNMP
 RUN yum -y install net-snmp*
 
