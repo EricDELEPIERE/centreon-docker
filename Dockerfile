@@ -20,6 +20,7 @@ RUN yum -y install net-snmp*
 
 # Start services
 ADD scripts/script.sh /tmp/script.sh
+ADD scripts/limits.conf /etc/systemd/system/mariadb.service.d/limits.conf
 RUN chmod +x /tmp/script.sh
 CMD ["/tmp/script.sh"]
 
