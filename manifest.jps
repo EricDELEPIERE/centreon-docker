@@ -1,0 +1,40 @@
+{
+	"jpsType": "install",
+	"jpsVersion": "0.1",
+	"application": {
+		"name": "Centreon 2.8",
+		"version": "",
+		"type": "",
+		"homepage": "https://github.com/matthieu-robin/centreon-docker/",
+		"logo": "",
+		"description": {
+			"text": ""
+		},
+		"categories": ["dockers/applications"],
+		"env": {
+			"topology": {
+				"engine": "",
+				"nodes": [],
+				"ssl": false,
+				"ha": false
+			}
+		},
+		"dockerImage": {
+			"name": "jmatthieurobin/centreon-docker",
+			"registry": "",
+			"username": "",
+			"password": ""
+		},
+		"settings": {
+			"fields": [{
+					"type": "dockertags",
+					"name": "tag",
+					"values": [{
+							"name": "2.8"
+						}
+					]
+				}
+			]
+		}
+	}
+}
