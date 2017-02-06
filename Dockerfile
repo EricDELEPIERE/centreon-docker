@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM centos:centos6
 MAINTAINER matthieu-robin
 
 # Update CentOS
@@ -6,7 +6,7 @@ RUN yum -y update
 RUN yum -y install wget git
 
 # Install Centreon Repository
-RUN wget http://yum.centreon.com/standard/3.4/el7/stable/centreon-stable.repo -O /etc/yum.repos.d/centreon-stable.repo
+RUN wget http://yum.centreon.com/standard/3.4/el6/stable/centreon-stable.repo -O /etc/yum.repos.d/centreon-stable.repo
 
 # Install Maria-DB
 RUN yum --nogpg -y install MariaDB-server
@@ -23,8 +23,8 @@ RUN yum -y install net-snmp*
 
 # Start services
 ADD scripts/script.sh /tmp/script.sh
-RUN mkdir -p /etc/systemd/system/mariadb.service.d/
-ADD scripts/limits.conf /etc/systemd/system/mariadb.service.d/limits.conf
+#RUN mkdir -p /etc/systemd/system/mariadb.service.d/
+#ADD scripts/limits.conf /etc/systemd/system/mariadb.service.d/limits.conf
 RUN chmod +x /tmp/script.sh
 CMD ["/tmp/script.sh"]
 
