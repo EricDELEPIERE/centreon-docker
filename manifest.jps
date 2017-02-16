@@ -1,40 +1,30 @@
 {
-	"jpsType": "install",
-	"jpsVersion": "0.1",
-	"application": {
-		"name": "Centreon 2.8",
-		"version": "",
-		"type": "",
-		"homepage": "https://github.com/matthieu-robin/centreon-docker/",
-		"logo": "",
-		"description": {
-			"text": ""
-		},
-		"categories": ["dockers/applications"],
-		"env": {
-			"topology": {
-				"engine": "",
-				"nodes": [],
-				"ssl": false,
-				"ha": false
-			}
-		},
-		"dockerImage": {
-			"name": "jmatthieurobin/centreon-docker",
-			"registry": "",
-			"username": "",
-			"password": ""
-		},
-		"settings": {
-			"fields": [{
-					"type": "dockertags",
-					"name": "tag",
-					"values": [{
-							"name": "2.8"
-						}
-					]
-				}
-			]
-		}
-	}
+  "jpsType": "install",
+  "name": "Centreon 2.8",
+  "logo": "https://static.centreon.com/wp-content/themes/centreon/assets/images/icons/logo.svg.gzip",
+  "description": "Centreon 2.8 based on a docker image - NOT OFFICIAL ",
+  "nodes": [
+    {
+      "nodeType": "docker",
+      "cloudlets": 16,
+      "displayName": "App Server",
+      "nodeGroup": "cp",
+      "image": "matthieurobin/centreon-docker",
+      "settings": {	
+          "fields": [{
+              "type": "dockertags",
+              "name": "tag",
+              "values": [{
+                  "name": "2.8"
+              }
+                        ]}
+                    ]}
+    }
+  ],
+    "onInstall": {
+        "restartContainers": {
+            "nodeGroup": "cp"
+    }
+  }
 }
+
