@@ -10,7 +10,7 @@
       "displayName": "App Server",
       "nodeGroup": "cp",
       "image": "matthieurobin/centreon-docker:2.8",
-  ],
+  }],
     "onInstall": {
         "restartContainers": {
             "nodeGroup": "cp"
