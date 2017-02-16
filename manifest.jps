@@ -9,17 +9,7 @@
       "cloudlets": 16,
       "displayName": "App Server",
       "nodeGroup": "cp",
-      "image": "matthieurobin/centreon-docker",
-      "settings": {	
-          "fields": [{
-              "type": "dockertags",
-              "name": "tag",
-              "values": [{
-                  "name": "2.8"
-              }
-                        ]}
-                    ]}
-    }
+      "image": "matthieurobin/centreon-docker:2.8",
   ],
     "onInstall": {
         "restartContainers": {
