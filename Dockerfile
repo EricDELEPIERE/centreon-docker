@@ -21,6 +21,9 @@ RUN yum --nogpg -y install centreon-plugin-Operatingsystems-Linux-Snmp centreon-
 # Install SNMP
 RUN yum -y install net-snmp*
 
+# clean YUM
+RUN yum clean all
+
 # Start services
 ADD scripts/script.sh /tmp/script.sh
 RUN mkdir -p /etc/systemd/system/mariadb.service.d/
